@@ -1,0 +1,19 @@
+4
+Omelette Vegetales 32.00 12 4
+Huevos
+Tomate
+Cebolla
+Chile Pimiento
+Tostadas Francesas 28.50 10 3
+Pan
+Huevo
+Canela
+Burrito Desayuno 34.00 8 4
+Tortilla Harina
+Huevo
+Frijoles
+Queso
+Avena Frutas 22.00 15 3
+Avena
+Banano
+Fresas

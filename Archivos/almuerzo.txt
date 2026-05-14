@@ -1,0 +1,20 @@
+4
+Pollo Asado 45.00 10 4
+Pollo
+Arroz
+Ensalada
+Tortillas
+Pasta Alfredo 42.50 7 3
+Pasta
+Crema
+Queso Parmesano
+Carne Guisada 48.00 6 4
+Carne
+Papas
+Zanahoria
+Arroz
+Ensalada Cesar 35.00 9 4
+Lechuga
+Pollo
+Crutones
+Aderezo Cesar

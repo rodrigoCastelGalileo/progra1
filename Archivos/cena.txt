@@ -1,0 +1,19 @@
+4
+Hamburguesa Clasica 38.00 8 4
+Pan Hamburguesa
+Carne
+Queso
+Lechuga
+Tacos Pollo 32.50 10 3
+Tortilla Maiz
+Pollo
+Salsa
+Sopa Vegetales 25.00 12 4
+Zanahoria
+Papa
+Guisquil
+Caldo
+Quesadilla Jamon 30.00 9 3
+Tortilla Harina
+Jamon
+Queso
