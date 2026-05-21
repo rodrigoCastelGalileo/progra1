@@ -1,20 +1,25 @@
-4
-Pollo Asado 45.00 10 4
-Pollo
-Arroz
-Ensalada
-Tortillas
-Pasta Alfredo 42.50 7 3
-Pasta
-Crema
-Queso Parmesano
-Carne Guisada 48.00 6 4
-Carne
-Papas
-Zanahoria
-Arroz
-Ensalada Cesar 35.00 9 4
+5
+El Parrillero 109.95 7 5
+4onz de lomito
+Papas Salteadas
+Ensalada verde
+Espinaca Gratinada
+Aguacate
+Pasta a la Florentina 109.95 5 4
+Filete de pechuga a la parrilla
+Penne rigatte
+Brocoli
+Tocino
+Ensalada Oriental 78.50 5 4
 Lechuga
-Pollo
-Crutones
-Aderezo Cesar
+Pollo a la parrilla
+Almendras y Ajonjolí
+Aderezo de sesamo
+Sweet Onion Burger 90.00 10 3
+Hamburguesa 1/4 de libra
+Cebolla caramelizada
+Papas Fritas
+Pescado al Ajillo 114.95 3 3
+Filete de pescado a la plancha
+Arroz
+Vegetales Salteados
