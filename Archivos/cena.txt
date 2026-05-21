@@ -1,19 +1,31 @@
-4
-Hamburguesa Clasica 38.00 8 4
-Pan Hamburguesa
-Carne
-Queso
-Lechuga
-Tacos Pollo 32.50 10 3
-Tortilla Maiz
-Pollo
-Salsa
-Sopa Vegetales 25.00 12 4
-Zanahoria
-Papa
-Guisquil
-Caldo
-Quesadilla Jamon 30.00 9 3
-Tortilla Harina
-Jamon
-Queso
+6
+Huevos Divorciados 59.00 10 4
+Huevos estrellados
+Tortillas con queso fundido
+Platanos fritos
+Frijol
+Tipico con longaniza y platanos 54.00 10 4
+Longaniza
+Platanos
+Frijol
+Huevos al gusto
+Omelette Tipico 65.00 5 5
+Longaniza
+Platanos
+Frijol
+Queso y Crema
+Tocino
+Huevos y Dobladas 55.00 5 4
+Huevos al gusto 
+Dobladas
+Frijol
+Platanos
+Huevos estrellados sobre chuchito 56.00 3 3
+Huevos estrellados
+Chuchitos
+Salsa roja
+Huevos revueltos con salchicha 52.00 9 4
+Huevos revueltos
+salchicha
+Frijol
+Platanos
