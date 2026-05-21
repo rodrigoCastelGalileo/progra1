@@ -24,6 +24,13 @@ struct Menu
 };
 
 // FUNCIONES/PROCESOS
+void cerrarCaja()
+{
+    cout << "\n********** CIERRE DE CAJA **********" << endl;
+    cout << "Caja cerrada correctamente." << endl;
+    cout << "Gracias por utilizar el sistema de la Cafeteria 'Alimentos y mas'." << endl;
+    cout << "Saliendo del sistema..." << endl;
+}
 
 void pause()
 {
