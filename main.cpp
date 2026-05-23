@@ -24,12 +24,50 @@ struct Menu
 };
 
 // FUNCIONES/PROCESOS
-void cerrarCaja()
+void generarReporte(double totalRecaudado, int totalMenusVendidos, const vector<Menu> &desayunos, const vector<Menu> &almuerzos, const vector<Menu> &cenas)
 {
-    cout << "\n********** CIERRE DE CAJA **********" << endl;
-    cout << "Caja cerrada correctamente." << endl;
-    cout << "Gracias por utilizar el sistema de la Cafeteria 'Alimentos y mas'." << endl;
-    cout << "Saliendo del sistema..." << endl;
+    ofstream reporte("reporte_final.txt");
+
+    if (!reporte.is_open())
+    {
+        cout << "No se pudo crear el archivo reporte_final.txt" << endl;
+        return;
+    }
+
+    reporte << "******** REPORTE DE VENTAS DIARIO ********" << endl;
+    reporte << "TOTAL RECAUDADO: Q " << totalRecaudado << endl;
+    reporte << "Total Menu vendidos " << totalMenusVendidos << endl;
+    reporte << "******** INVENTARIO SOBRANTE ********" << endl;
+
+    for (size_t indice = 0; indice < desayunos.size(); indice++)
+    {
+        if (desayunos[indice].stock > 0)
+        {
+            reporte << "- " << desayunos[indice].nombre << ": " << desayunos[indice].stock << " unidades" << endl;
+        }
+    }
+
+    for (size_t indice = 0; indice < almuerzos.size(); indice++)
+    {
+        if (almuerzos[indice].stock > 0)
+        {
+            reporte << "- " << almuerzos[indice].nombre << ": " << almuerzos[indice].stock << " unidades" << endl;
+        }
+    }
+
+    for (size_t indice = 0; indice < cenas.size(); indice++)
+    {
+        if (cenas[indice].stock > 0)
+        {
+            reporte << "- " << cenas[indice].nombre << ": " << cenas[indice].stock << " unidades" << endl;
+        }
+    }
+
+    reporte << "******************************************" << endl;
+
+    reporte.close();
+
+    cout << "Reporte final generado correctamente en reporte_final.txt" << endl;
 }
 
 void pause()
@@ -207,6 +245,8 @@ int main()
     vector<Menu> almuerzos;
     vector<Menu> cenas;
 
+    double totalRecaudado = 0;
+    int totalMenusVendidos = 0;
     int option;
     int eleccion;
 
@@ -294,7 +334,15 @@ int main()
             break;
 
         case 4:
-            /* code */
+            cargarDatos("Archivos/desayuno.txt", desayunos);
+            cargarDatos("Archivos/almuerzo.txt", almuerzos);
+            cargarDatos("Archivos/cena.txt", cenas);
+
+            generarReporte(totalRecaudado, totalMenusVendidos, desayunos, almuerzos, cenas);
+
+            cout << "\nCaja cerrada correctamente." << endl;
+            cout << "Gracias por utilizar el sistema de la Cafeteria 'Alimentos y mas'." << endl;
+            cout << "Saliendo del sistema..." << endl;
             break;
 
         case 5:
