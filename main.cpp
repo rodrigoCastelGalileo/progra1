@@ -25,7 +25,10 @@ struct Menu
 
 // FUNCIONES/PROCESOS
 
-void generarReporte(double totalRecaudado, int totalMenusVendidos, const vector<Menu> &desayunos, const vector<Menu> &almuerzos, const vector<Menu> &cenas)
+void generarReporte(double totalRecaudado, int totalMenusVendidos,
+                    const vector<Menu> &desayunos,
+                    const vector<Menu> &almuerzos,
+                    const vector<Menu> &cenas)
 {
     ofstream reporte("Archivos/reporte_final.txt");
 
@@ -42,29 +45,17 @@ void generarReporte(double totalRecaudado, int totalMenusVendidos, const vector<
 
     reporte << "******** INVENTARIO SOBRANTE ********" << endl;
 
-    for (size_t indice = 0; indice < desayunos.size(); indice++)
-    {
-        if (desayunos[indice].stock > 0)
-        {
-            reporte << "- " << desayunos[indice].nombre << ": " << desayunos[indice].stock << " unidades" << endl;
-        }
-    }
+    for (size_t i = 0; i < desayunos.size(); i++)
+        if (desayunos[i].stock > 0)
+            reporte << "- " << desayunos[i].nombre << ": " << desayunos[i].stock << endl;
 
-    for (size_t indice = 0; indice < almuerzos.size(); indice++)
-    {
-        if (almuerzos[indice].stock > 0)
-        {
-            reporte << "- " << almuerzos[indice].nombre << ": " << almuerzos[indice].stock << " unidades" << endl;
-        }
-    }
+    for (size_t i = 0; i < almuerzos.size(); i++)
+        if (almuerzos[i].stock > 0)
+            reporte << "- " << almuerzos[i].nombre << ": " << almuerzos[i].stock << endl;
 
-    for (size_t indice = 0; indice < cenas.size(); indice++)
-    {
-        if (cenas[indice].stock > 0)
-        {
-            reporte << "- " << cenas[indice].nombre << ": " << cenas[indice].stock << " unidades" << endl;
-        }
-    }
+    for (size_t i = 0; i < cenas.size(); i++)
+        if (cenas[i].stock > 0)
+            reporte << "- " << cenas[i].nombre << ": " << cenas[i].stock << endl;
 
     reporte << "******************************************" << endl;
 
@@ -80,6 +71,7 @@ void pause()
     cin.get();
 }
 
+// 🔥 FIX DEFINITIVO DEL ERROR (stod/stoi seguro)
 void cargarDatos(string nombreArchivo, vector<Menu> &menus)
 {
     ifstream archivo(nombreArchivo);
@@ -101,38 +93,56 @@ void cargarDatos(string nombreArchivo, vector<Menu> &menus)
         Menu nuevoMenu;
         string linea;
 
-        getline(archivo, linea);
+        if (!getline(archivo, linea))
+            break;
+
+        if (linea.empty())
+        {
+            i--;
+            continue;
+        }
 
         stringstream ss(linea);
-
         vector<string> palabras;
         string palabra;
 
         while (ss >> palabra)
-        {
             palabras.push_back(palabra);
+
+        if (palabras.size() < 4)
+        {
+            cout << "Error de formato en archivo: " << nombreArchivo << endl;
+            continue;
         }
 
-        nuevoMenu.cantIng = stoi(palabras[palabras.size() - 1]);
-        nuevoMenu.stock = stoi(palabras[palabras.size() - 2]);
-        nuevoMenu.precio = stod(palabras[palabras.size() - 3]);
+        try
+        {
+            nuevoMenu.cantIng = stoi(palabras[palabras.size() - 1]);
+            nuevoMenu.stock = stoi(palabras[palabras.size() - 2]);
+            nuevoMenu.precio = stod(palabras[palabras.size() - 3]);
+        }
+        catch (...)
+        {
+            cout << "Error de formato en archivo: " << nombreArchivo << endl;
+            continue;
+        }
 
         nuevoMenu.nombre = "";
 
         for (size_t j = 0; j < palabras.size() - 3; j++)
         {
             nuevoMenu.nombre += palabras[j];
-
             if (j < palabras.size() - 4)
-            {
                 nuevoMenu.nombre += " ";
-            }
         }
 
         for (int j = 0; j < nuevoMenu.cantIng; j++)
         {
             Ingrediente nuevoIngrediente;
-            getline(archivo, nuevoIngrediente.nombre);
+
+            if (!getline(archivo, nuevoIngrediente.nombre))
+                break;
+
             nuevoMenu.ing.push_back(nuevoIngrediente);
         }
 
@@ -170,7 +180,7 @@ void reescribirArchivo(string nombreArchivo, vector<Menu> &menus)
     archivo.close();
 }
 
-// FUNCIONES DE VENTAS D/A/C
+// VENTAS
 
 void ventaDesayuno(vector<Menu> &desayunos, int eleccion)
 {
@@ -181,9 +191,7 @@ void ventaDesayuno(vector<Menu> &desayunos, int eleccion)
         if (desayunos[idx].stock > 0)
         {
             desayunos[idx].stock--;
-
             cout << "Venta exitosa de: " << desayunos[idx].nombre << endl;
-
             reescribirArchivo("Archivos/desayuno.txt", desayunos);
         }
         else
@@ -206,9 +214,7 @@ void ventaAlmuerzo(vector<Menu> &almuerzos, int eleccion)
         if (almuerzos[idx].stock > 0)
         {
             almuerzos[idx].stock--;
-
             cout << "Venta exitosa de: " << almuerzos[idx].nombre << endl;
-
             reescribirArchivo("Archivos/almuerzo.txt", almuerzos);
         }
         else
@@ -231,9 +237,7 @@ void ventaCena(vector<Menu> &cenas, int eleccion)
         if (cenas[idx].stock > 0)
         {
             cenas[idx].stock--;
-
             cout << "Venta exitosa de: " << cenas[idx].nombre << endl;
-
             reescribirArchivo("Archivos/cena.txt", cenas);
         }
         else
@@ -278,7 +282,6 @@ int main()
         switch (option)
         {
         case 1:
-
             cargarDatos("Archivos/desayuno.txt", desayunos);
 
             for (size_t i = 0; i < desayunos.size(); i++)
@@ -288,15 +291,20 @@ int main()
                 cout << "Ingredientes:" << endl;
 
                 for (size_t j = 0; j < desayunos[i].ing.size(); j++)
-                {
                     cout << "- " << desayunos[i].ing[j].nombre << endl;
-                }
 
                 cout << endl;
             }
 
+            cout << "0. Regresar al menu principal" << endl;
             cout << "Elija el numero de plato que desea comprar: ";
             cin >> eleccion;
+
+            if (eleccion == 0)
+            {
+                cout << "\nRegresando...\n\n";
+                break;
+            }
 
             if (eleccion > 0 && eleccion <= (int)desayunos.size())
             {
@@ -305,14 +313,13 @@ int main()
                     totalRecaudado += desayunos[eleccion - 1].precio;
                     totalMenusVendidos++;
                 }
-            }
 
-            ventaDesayuno(desayunos, eleccion);
+                ventaDesayuno(desayunos, eleccion);
+            }
 
             break;
 
         case 2:
-
             cargarDatos("Archivos/almuerzo.txt", almuerzos);
 
             for (size_t i = 0; i < almuerzos.size(); i++)
@@ -322,15 +329,20 @@ int main()
                 cout << "Ingredientes:" << endl;
 
                 for (size_t j = 0; j < almuerzos[i].ing.size(); j++)
-                {
                     cout << "- " << almuerzos[i].ing[j].nombre << endl;
-                }
 
                 cout << endl;
             }
 
+            cout << "0. Regresar al menu principal" << endl;
             cout << "Elija el numero de plato que desea comprar: ";
             cin >> eleccion;
+
+            if (eleccion == 0)
+            {
+                cout << "\nRegresando...\n\n";
+                break;
+            }
 
             if (eleccion > 0 && eleccion <= (int)almuerzos.size())
             {
@@ -339,14 +351,13 @@ int main()
                     totalRecaudado += almuerzos[eleccion - 1].precio;
                     totalMenusVendidos++;
                 }
-            }
 
-            ventaAlmuerzo(almuerzos, eleccion);
+                ventaAlmuerzo(almuerzos, eleccion);
+            }
 
             break;
 
         case 3:
-
             cargarDatos("Archivos/cena.txt", cenas);
 
             for (size_t i = 0; i < cenas.size(); i++)
@@ -356,15 +367,20 @@ int main()
                 cout << "Ingredientes:" << endl;
 
                 for (size_t j = 0; j < cenas[i].ing.size(); j++)
-                {
                     cout << "- " << cenas[i].ing[j].nombre << endl;
-                }
 
                 cout << endl;
             }
 
+            cout << "0. Regresar al menu principal" << endl;
             cout << "Elija el numero de plato que desea comprar: ";
             cin >> eleccion;
+
+            if (eleccion == 0)
+            {
+                cout << "\nRegresando...\n\n";
+                break;
+            }
 
             if (eleccion > 0 && eleccion <= (int)cenas.size())
             {
@@ -373,48 +389,30 @@ int main()
                     totalRecaudado += cenas[eleccion - 1].precio;
                     totalMenusVendidos++;
                 }
-            }
 
-            ventaCena(cenas, eleccion);
+                ventaCena(cenas, eleccion);
+            }
 
             break;
 
         case 4:
-
             cargarDatos("Archivos/desayuno.txt", desayunos);
             cargarDatos("Archivos/almuerzo.txt", almuerzos);
             cargarDatos("Archivos/cena.txt", cenas);
 
-            generarReporte(totalRecaudado,
-                            totalMenusVendidos,
-                            desayunos,
-                            almuerzos,
-                            cenas);
-
-            cout << "\nCaja cerrada correctamente." << endl;
-            cout << "Gracias por utilizar el sistema de la Cafeteria 'Alimentos y mas'." << endl;
-            cout << "Saliendo del sistema..." << endl;
+            generarReporte(totalRecaudado, totalMenusVendidos,
+                           desayunos, almuerzos, cenas);
 
             option = 5;
-
             break;
 
         case 5:
-
             cout << "Saliendo del programa..." << endl;
-
-            break;
-
-        default:
-
-            cout << "Opcion invalida" << endl;
-
             break;
         }
 
     } while (option != 5);
 
     pause();
-
     return 0;
 }

@@ -1,23 +1,22 @@
 ******** REPORTE DE VENTAS DIARIO ********
-TOTAL RECAUDADO: Q 59
-Total Menu vendidos 1
+TOTAL RECAUDADO: Q 118
+Total Menu vendidos 2
 
 ******** INVENTARIO SOBRANTE ********
-- Huevos Divorciados: 1 unidades
-- Tipico con longaniza y platanos: 9 unidades
-- Omelette Tipico: 5 unidades
-- Huevos y Dobladas: 5 unidades
-- Huevos estrellados sobre chuchito: 3 unidades
-- Huevos revueltos con salchicha: 8 unidades
-- El Parrillero: 7 unidades
-- Pasta a la Florentina: 5 unidades
-- Ensalada Oriental: 5 unidades
-- Sweet Onion Burger: 9 unidades
-- Pescado al Ajillo: 3 unidades
-- Huevos Divorciados: 10 unidades
-- Tipico con longaniza y platanos: 9 unidades
-- Omelette Tipico: 5 unidades
-- Huevos y Dobladas: 5 unidades
-- Huevos estrellados sobre chuchito: 3 unidades
-- Huevos revueltos con salchicha: 9 unidades
+- Huevos Divorciados: 8
+- Tipico con longaniza y platanos: 10
+- Omelette Tipico: 10
+- Huevos y Dobladas: 10
+- Huevos estrellados sobre chuchito: 10
+- Huevos revueltos con salchicha: 10
+- El Parrillero: 10
+- Pasta a la Florentina: 10
+- Ensalada Oriental: 10
+- Sweet Onion Burger: 10
+- Huevos Divorciados: 10
+- Tipico con longaniza y platanos: 10
+- Omelette Tipico: 10
+- Huevos y Dobladas: 10
+- Huevos estrellados sobre chuchito: 10
+- Huevos revueltos con salchicha: 10
 ******************************************
