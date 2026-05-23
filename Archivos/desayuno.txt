@@ -1,5 +1,5 @@
 6
-Huevos Divorciados 59 9 4
+Huevos Divorciados 59 10 4
 Huevos estrellados
 Tortillas con queso fundido
 Platanos fritos
@@ -9,22 +9,22 @@ Longaniza
 Platanos
 Frijol
 Huevos al gusto
-Omelette Tipico 65 5 5
+Omelette Tipico 65 10 5
 Longaniza
 Platanos
 Frijol
 Queso y Crema
 Tocino
-Huevos y Dobladas 55 5 4
+Huevos y Dobladas 55 10 4
 Huevos al gusto 
 Dobladas
 Frijol
 Platanos
-Huevos estrellados sobre chuchito 56 3 3
+Huevos estrellados sobre chuchito 56 10 3
 Huevos estrellados
 Chuchitos
 Salsa roja
-Huevos revueltos con salchicha 52 8 4
+Huevos revueltos con salchicha 52 10 4
 Huevos revueltos
 salchicha
 Frijol

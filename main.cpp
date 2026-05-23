@@ -24,9 +24,10 @@ struct Menu
 };
 
 // FUNCIONES/PROCESOS
+
 void generarReporte(double totalRecaudado, int totalMenusVendidos, const vector<Menu> &desayunos, const vector<Menu> &almuerzos, const vector<Menu> &cenas)
 {
-    ofstream reporte("reporte_final.txt");
+    ofstream reporte("Archivos/reporte_final.txt");
 
     if (!reporte.is_open())
     {
@@ -37,6 +38,8 @@ void generarReporte(double totalRecaudado, int totalMenusVendidos, const vector<
     reporte << "******** REPORTE DE VENTAS DIARIO ********" << endl;
     reporte << "TOTAL RECAUDADO: Q " << totalRecaudado << endl;
     reporte << "Total Menu vendidos " << totalMenusVendidos << endl;
+    reporte << endl;
+
     reporte << "******** INVENTARIO SOBRANTE ********" << endl;
 
     for (size_t indice = 0; indice < desayunos.size(); indice++)
@@ -67,7 +70,7 @@ void generarReporte(double totalRecaudado, int totalMenusVendidos, const vector<
 
     reporte.close();
 
-    cout << "Reporte final generado correctamente en reporte_final.txt" << endl;
+    cout << "Reporte final generado correctamente en Archivos/reporte_final.txt" << endl;
 }
 
 void pause()
@@ -174,9 +177,11 @@ void ventaDesayuno(vector<Menu> &desayunos, int eleccion)
     if (eleccion > 0 && eleccion <= (int)desayunos.size())
     {
         int idx = eleccion - 1;
+
         if (desayunos[idx].stock > 0)
         {
             desayunos[idx].stock--;
+
             cout << "Venta exitosa de: " << desayunos[idx].nombre << endl;
 
             reescribirArchivo("Archivos/desayuno.txt", desayunos);
@@ -197,9 +202,11 @@ void ventaAlmuerzo(vector<Menu> &almuerzos, int eleccion)
     if (eleccion > 0 && eleccion <= (int)almuerzos.size())
     {
         int idx = eleccion - 1;
+
         if (almuerzos[idx].stock > 0)
         {
             almuerzos[idx].stock--;
+
             cout << "Venta exitosa de: " << almuerzos[idx].nombre << endl;
 
             reescribirArchivo("Archivos/almuerzo.txt", almuerzos);
@@ -220,9 +227,11 @@ void ventaCena(vector<Menu> &cenas, int eleccion)
     if (eleccion > 0 && eleccion <= (int)cenas.size())
     {
         int idx = eleccion - 1;
+
         if (cenas[idx].stock > 0)
         {
             cenas[idx].stock--;
+
             cout << "Venta exitosa de: " << cenas[idx].nombre << endl;
 
             reescribirArchivo("Archivos/cena.txt", cenas);
@@ -238,7 +247,8 @@ void ventaCena(vector<Menu> &cenas, int eleccion)
     }
 }
 
-// MAIN (Tu estructura base original sin alterar)
+// MAIN
+
 int main()
 {
     vector<Menu> desayunos;
@@ -247,6 +257,7 @@ int main()
 
     double totalRecaudado = 0;
     int totalMenusVendidos = 0;
+
     int option;
     int eleccion;
 
@@ -261,10 +272,13 @@ int main()
         cout << "4. Cerrar Caja Y salir" << endl;
         cout << "5. Cerrar Programa" << endl;
         cout << "*****************************************************************" << endl;
+
         cin >> option;
+
         switch (option)
         {
         case 1:
+
             cargarDatos("Archivos/desayuno.txt", desayunos);
 
             for (size_t i = 0; i < desayunos.size(); i++)
@@ -281,13 +295,24 @@ int main()
                 cout << endl;
             }
 
-            // Bloque original para pedir el plato y llamar a su funci n externa
             cout << "Elija el numero de plato que desea comprar: ";
             cin >> eleccion;
+
+            if (eleccion > 0 && eleccion <= (int)desayunos.size())
+            {
+                if (desayunos[eleccion - 1].stock > 0)
+                {
+                    totalRecaudado += desayunos[eleccion - 1].precio;
+                    totalMenusVendidos++;
+                }
+            }
+
             ventaDesayuno(desayunos, eleccion);
+
             break;
 
         case 2:
+
             cargarDatos("Archivos/almuerzo.txt", almuerzos);
 
             for (size_t i = 0; i < almuerzos.size(); i++)
@@ -304,13 +329,24 @@ int main()
                 cout << endl;
             }
 
-            // Bloque original para pedir el plato y llamar a su funci n externa
             cout << "Elija el numero de plato que desea comprar: ";
             cin >> eleccion;
+
+            if (eleccion > 0 && eleccion <= (int)almuerzos.size())
+            {
+                if (almuerzos[eleccion - 1].stock > 0)
+                {
+                    totalRecaudado += almuerzos[eleccion - 1].precio;
+                    totalMenusVendidos++;
+                }
+            }
+
             ventaAlmuerzo(almuerzos, eleccion);
+
             break;
 
         case 3:
+
             cargarDatos("Archivos/cena.txt", cenas);
 
             for (size_t i = 0; i < cenas.size(); i++)
@@ -327,34 +363,58 @@ int main()
                 cout << endl;
             }
 
-            // Bloque original para pedir el plato y llamar a su funci n externa
             cout << "Elija el numero de plato que desea comprar: ";
             cin >> eleccion;
+
+            if (eleccion > 0 && eleccion <= (int)cenas.size())
+            {
+                if (cenas[eleccion - 1].stock > 0)
+                {
+                    totalRecaudado += cenas[eleccion - 1].precio;
+                    totalMenusVendidos++;
+                }
+            }
+
             ventaCena(cenas, eleccion);
+
             break;
 
         case 4:
+
             cargarDatos("Archivos/desayuno.txt", desayunos);
             cargarDatos("Archivos/almuerzo.txt", almuerzos);
             cargarDatos("Archivos/cena.txt", cenas);
 
-            generarReporte(totalRecaudado, totalMenusVendidos, desayunos, almuerzos, cenas);
+            generarReporte(totalRecaudado,
+                            totalMenusVendidos,
+                            desayunos,
+                            almuerzos,
+                            cenas);
 
             cout << "\nCaja cerrada correctamente." << endl;
             cout << "Gracias por utilizar el sistema de la Cafeteria 'Alimentos y mas'." << endl;
             cout << "Saliendo del sistema..." << endl;
+
+            option = 5;
+
             break;
 
         case 5:
+
             cout << "Saliendo del programa..." << endl;
+
             break;
 
         default:
+
             cout << "Opcion invalida" << endl;
+
             break;
         }
+
     } while (option != 5);
 
     pause();
+
     return 0;
 }
