@@ -1,31 +1,25 @@
-6
-Huevos Divorciados 59 10 4
-Huevos estrellados
-Tortillas con queso fundido
-Platanos fritos
-Frijol
-Tipico con longaniza y platanos 54 10 4
-Longaniza
-Platanos
-Frijol
-Huevos al gusto
-Omelette Tipico 65 10 5
-Longaniza
-Platanos
-Frijol
-Queso y Crema
+5
+El Parrillero 109.95 10 5
+4 onzas de lomito
+Papas Salteadas
+Ensalada verde
+Espinaca Gratinada
+Aguacate
+Pasta a la Florentina 109.95 10 4
+Filete de pechuga a la parrilla
+Penne rigatte
+brócoli
 Tocino
-Huevos y Dobladas 55 10 4
-Huevos al gusto 
-Dobladas
-Frijol
-Platanos
-Huevos estrellados sobre chuchito 56 10 3
-Huevos estrellados
-Chuchitos
-Salsa roja
-Huevos revueltos con salchicha 52 10 4
-Huevos revueltos
-salchicha
-Frijol
-Platanos
+Ensalada Oriental 78.50 5 4
+Lechuga
+Pollo a la parrilla
+Almendras y AjonjolÃ
+Aderezo de sésamo
+Hamburguesa de cebolla dulce 90.00 10 3
+Hamburguesa 1/4 de libra
+Cebolla caramelizada
+Papas Fritas
+Pescado al Ajillo 114.95 3 3
+Filete de pescado a la plancha
+Arroz
+Vegetales Salteados

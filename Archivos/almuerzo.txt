@@ -5,7 +5,7 @@ Papas Salteadas
 Ensalada verde
 Espinaca Gratinada
 Aguacate
-Pasta a la Florentina 109.95 10 4
+Pasta a la Florentina 109.95 9 4
 Filete de pechuga a la parrilla
 Penne rigatte
 Brocoli
@@ -19,7 +19,7 @@ Sweet Onion Burger 90 10 3
 Hamburguesa 1/4 de libra
 Cebolla caramelizada
 Papas Fritas
-Pescado al Ajillo 114.95  3
+Pescado al Ajillo 114.95 10 3
 Filete de pescado a la plancha
 Arroz
 Vegetales Salteados
