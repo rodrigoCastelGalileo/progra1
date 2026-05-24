@@ -71,7 +71,7 @@ void pause()
     cin.get();
 }
 
-// 🔥 FIX DEFINITIVO DEL ERROR (stod/stoi seguro)
+
 void cargarDatos(string nombreArchivo, vector<Menu> &menus)
 {
     ifstream archivo(nombreArchivo);
