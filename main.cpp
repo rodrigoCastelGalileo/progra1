@@ -71,7 +71,6 @@ void pause()
     cin.get();
 }
 
-
 void cargarDatos(string nombreArchivo, vector<Menu> &menus)
 {
     ifstream archivo(nombreArchivo);
@@ -296,7 +295,7 @@ int main()
                 cout << endl;
             }
 
-            cout << "0. Regresar al menu principal" << endl;
+            cout << ">>>>>> 0. Regresar al menu principal <<<<<<" << endl;
             cout << "Elija el numero de plato que desea comprar: ";
             cin >> eleccion;
 
@@ -334,7 +333,7 @@ int main()
                 cout << endl;
             }
 
-            cout << "0. Regresar al menu principal" << endl;
+            cout << ">>>>>> 0. Regresar al menu principal <<<<<<" << endl;
             cout << "Elija el numero de plato que desea comprar: ";
             cin >> eleccion;
 
@@ -372,7 +371,7 @@ int main()
                 cout << endl;
             }
 
-            cout << "0. Regresar al menu principal" << endl;
+            cout << ">>>>>> 0. Regresar al menu principal <<<<<<" << endl;
             cout << "Elija el numero de plato que desea comprar: ";
             cin >> eleccion;
 
