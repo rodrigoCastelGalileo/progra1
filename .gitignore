@@ -1,2 +1,4 @@
 // Archivos que no queremos que se pusheen al proyecto si no que solo queden local
 main.exe
+programa.exe
+reporte_final.txt
